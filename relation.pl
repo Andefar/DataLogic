@@ -1,4 +1,5 @@
 
+
 /*
 nat(o).
 nat(s(N)) :- nat(N)

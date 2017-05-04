@@ -31,8 +31,8 @@ kb(islet_of_langerhans,haspart,beta_cell).
 kb(islet_of_langerhans,haspart,alpha_cell).
 
 /* Secretion */
-kb(alpha_cell,produces,glucagon).
-kb(beta_cell,produces,insulin).
-kb(omega_cell,produces,gastrin).
-kb(omega_cell,produces,somatostatin).
-kb(pp_cell,produces,pancreatic_polypeptide).
+kb(alpha_cell,secretes,glucagon).
+kb(beta_cell,secretes,insulin).
+kb(omega_cell,secretes,gastrin).
+kb(omega_cell,secretes,somatostatin).
+kb(pp_cell,secretes,pancreatic_polypeptide).
