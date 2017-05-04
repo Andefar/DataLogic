@@ -1,0 +1,20 @@
+skriv om hvilken type queries systemet kan håndtere (use case ish)
+evt. kan vi implementere queries der fortæller hvordan A kan relatere til B
+
+OWA/CWA
+soundness/completeness
+ch 5 inference rules are not complete
+
+termination: 
+solution 1: isa(X,Y) :- kb(X,isa,Z), isa(Z,Y).
+solution 2, use a counter to prevent branches going forever: every(X,Y,S(N)) :- every(X,Z,N),every(Z,Y,N).
+
+
+structure:
+class logic
+owa
+inference engine
+crl pangreas
+parthood
+prolog implementation
+query functionalities

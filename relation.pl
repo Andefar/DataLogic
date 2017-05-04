@@ -3,13 +3,16 @@
 /* isa relationship */
 isa(X,X).
 isa(X,Y) :- kb(X,isa,Z),isa(Z,Y).
+overlap(X,Y) :- isa(Z,X), isa(Z,Y).
+disjoint(X,Y) :- overlap(X,Y),!,fail.
+disjoint(X,Y).
 
 /* haspart relationship */
-haspart(X,X).
-haspart(X,Y) :- kb(X,haspart,Z),haspart(Z,Y).
+ae(X,haspart,Y) :- kb(X,haspart,Y).
+ae(X,haspart,Z) :- kb(Y,haspart,Z), ae(X,haspart,Y).
+
 
 /* produces relationship */
-produces(X,X).
 produces(X,Y) :- kb(X,produces,Z),produces(Z,Y).
 
 
