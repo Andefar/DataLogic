@@ -1,16 +1,25 @@
-:- ensure_loaded('relation.pl').
-/* Inference rules */
+/* isa relationship */
+isa(X,X).
+isa(X,Y) :- kb(X,isa,Z),isa(Z,Y).
+overlap(X,Y) :- isa(Z,X), isa(Z,Y).
+disjoint(X,Y) :- overlap(X,Y),!,fail.
+disjoint(X,Y).
+
+/* haspart relationship */
+ae(X,haspart,Y) :- kb(X,haspart,Y).
+ae(X,haspart,Y) :- kb(X,haspart,Z), ae(Z,haspart,Y).
+
 /* Relationship inheritance */
-ae(CP,R,D) :- ae(C,R,D), isa(CP,C).
-ea(C,R,DP) :- ea(C,R,D), isa(DP,D).
-aa(CP,R,D) :- aa(C,R,D), isa(CP,C).
-aa(C,R,DP) :- aa(C,R,D), isa(DP,D).
+ae(CP,R,D) :- isa(CP,C), CP \= C, ae(C,R,D).
+ea(C,R,DP) :- isa(DP,D), DP \= D, ea(C,R,D).
+aa(CP,R,D) :- isa(CP,C), CP \= C, aa(C,R,D).
+aa(C,R,DP) :- isa(DP,D), DP \= D, aa(C,R,D).
 
 /* Relationship generalization */
-ae(C,R,DP) :- ae(C,R,D), isa(D,DP).
-ee(CP,R,D) :- ee(C,R,D), isa(C,CP).
-ee(C,R,DP) :- ae(C,R,D), isa(D,DP).
-ea(CP,R,D) :- ea(C,R,D), isa(C,CP).
+ae(C,R,DP) :- isa(D,DP), DP \= D, ae(C,R,D).
+ee(CP,R,D) :- isa(C,CP), CP \= C, ee(C,R,D).
+ee(C,R,DP) :- isa(D,DP), DP \= D, ae(C,R,D).
+ea(CP,R,D) :- isa(C,CP), CP \= C, ea(C,R,D).
 
 /* Weakening of quantifier */
 ae(C,R,D) :- aa(C,R,D).
