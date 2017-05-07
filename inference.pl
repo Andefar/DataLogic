@@ -5,6 +5,12 @@ overlap(X,Y) :- isa(Z,X), isa(Z,Y).
 disjoint(X,Y) :- overlap(X,Y),!,fail.
 disjoint(_,_).
 
+relates(a,X,isa,Y) :- isa(X,Y).
+relates(aa,X,R,Y) :- aa(X,R,Y).
+relates(ae,X,R,Y) :- ae(X,R,Y).
+relates(ea,X,R,Y) :- ea(X,R,Y).
+relates(ee,X,R,Y) :- ee(X,R,Y).
+
 /* haspart relationship */
 ae(X,haspart,Y) :- kb(X,haspart,Y).
 ae(X,haspart,Y) :- kb(X,haspart,Z), ae(Z,haspart,Y).
