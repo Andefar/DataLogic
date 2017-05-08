@@ -1,20 +1,7 @@
-/* Knowledge base types */
-isclass(X) :- kb(X,_,_).
-isclass(X) :- kb(_,_,X).
-isrelation(R) :- kb(_,R,_).
-
-/* isa relationship */
-isa(X,X).
-isa(X,Y) :- kb(X,isa,Z),isa(Z,Y).
-overlap(X,Y) :- isa(Z,X), isa(Z,Y).
-disjoint(X,Y) :- isclass(X),isclass(Y),\+ overlap(X,Y).
-
-/* haspart relationship */
-ae(X,haspart,Y) :- kb(X,haspart,Y).
-ae(X,haspart,Y) :- kb(X,haspart,Z), ae(Z,haspart,Y).
-
-/* secretes relationship */
-ae(X,secretes,Y) :- kb(X,secretes,Y).
+/* Relation inference */
+ae(X,R,Y) :- kb(X,R,Y).
+ae(X,R,X) :- reflexive(R).
+ae(X,R,Y) :- transitive(R), kb(X,R,Z), ae(Z,R,Y).
 
 /* Relationship inheritance */
 ae(CP,R,D) :- kb(CP,isa,C), ae(C,R,D).

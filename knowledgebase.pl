@@ -1,3 +1,8 @@
+/* Relation attributes */
+transitive(isa).
+reflexive(isa).
+transitive(haspart).
+
 /* Class membership */
 kb(stem_cell,isa,cell).
 kb(pancreatic_cell,isa,cell).
@@ -25,7 +30,7 @@ kb(pancreatic_polypeptide,isa,hormone).
 kb(digestive_enzymes,isa,enzyme).
 kb(acinar_cell,isa,enzyme).
 
-/* Part of */
+/* Parthood */
 kb(nervous_system,haspart,neuronal_schwann_cell).
 kb(pancreas,haspart,exocrine_pancreas).
 kb(pancreas,haspart,endocrine_pancreas).
