@@ -1,5 +1,7 @@
-/* Relation inference */
+/* Knowledge base interpretation */
 ae(X,R,Y) :- kb(X,R,Y).
+
+/* Relation properties */
 ae(X,R,X) :- reflexive(R).
 ae(X,R,Y) :- transitive(R), kb(X,R,Z), ae(Z,R,Y).
 
