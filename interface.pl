@@ -1,4 +1,4 @@
-:- ensure_loaded('inference2.pl').
+:- ensure_loaded('inference.pl').
 :- ensure_loaded('knowledgebase.pl').
 
 /* Types */
